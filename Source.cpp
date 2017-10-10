@@ -5,7 +5,6 @@ struct Node {
 	char info[9];
 	Node * link;
 };
-
 struct List {
 	Node * firstNode = nullptr;
 	void addFirstNode(char * newInfo) {
@@ -13,6 +12,16 @@ struct List {
 		strcpy_s(newNode->info, 9, newInfo);
 		newNode->link = firstNode;
 		firstNode = newNode;
+	}
+	void addLastNode(char * newInfo) {
+		Node * newNode = new Node;
+		strcpy_s(newNode->info, 9, newInfo);
+		Node * tempNode = firstNode;
+		while (tempNode->link != nullptr) {
+			tempNode = tempNode->link;
+		}
+		tempNode->link = newNode;
+		newNode->link = nullptr;
 	}
 	void printNode() {
 		Node * tempNode = firstNode;
@@ -35,5 +44,6 @@ void main() {
 	newList.addFirstNode("IB160093");
 	newList.addFirstNode("IB160188");
 	newList.addFirstNode("IB160033");
+	newList.addLastNode("IB160033");
 	newList.printNode();
 }
