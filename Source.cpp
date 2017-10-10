@@ -31,6 +31,16 @@ struct List {
 		}
 		cout << endl;
 	}
+	void Dealocate() {
+		Node * tempNode = firstNode;
+		Node * nextNode = nullptr;
+		while (tempNode != nullptr) {
+			Node * needToBeDeleted = tempNode;
+			nextNode = tempNode->link;
+			delete needToBeDeleted;
+			tempNode = nextNode;
+		}
+	}
 };
 
 void main() {
